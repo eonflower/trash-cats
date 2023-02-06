@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&family=Shadows+Into+Light&family=Solitreo&display=swap');
+
+/* font-family: 'Rock Salt', cursive;
+font-family: 'Shadows Into Light', cursive;
+font-family: 'Solitreo', cursive; */
+
+body {
+  margin: 0;
+}
+
+
+.header-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 0 3rem 0;
+}
+
+.title-container {
+  display: grid;
+  align-items: end;
+  font-family: "Rock Salt", cursive;
+  max-width: 250px;
+}
+
+.light-title {
+  color: black;
+}
+
+.dark-title {
+  color: rgb(255, 255, 255);
+}
+
+.page-title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.page-subtitle {
+  font-size: .8rem;
+  margin: 0;
+}
+
+.form-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  justify-content: center;
+  max-width: 600px;
+  height: 110px;
+  padding: 1rem;
+}
+
+.light-form {
+  background-image: radial-gradient(#fff, rgb(235, 235, 235));
+  box-shadow: 0px 3px 5px rgb(203, 203, 203);
+}
+
+.dark-form {
+  background-image: radial-gradient(rgb(145, 145, 145), rgb(65, 65, 65));
+  box-shadow: 0px 3px 5px rgb(0, 0, 0);
+}
+
+.button-span {
+  display: flex;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.input-span {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input {
+  border: 2px rgb(255, 255, 255) inset;
+  box-shadow: 0px 0px 2px rgb(213, 213, 213);
+  padding: .1rem .3rem;
+  height: 25px;
+}
+
+.cat-button-img {
+  height: 40px;
+  cursor: pointer;
+
+  transition: height ease-in .3s;
+  transition: transform ease-in .5s;
+}
+
+.cat-button-img:active {
+  height: 45px;
+}
+
+.cat-button-img:hover {
+  transform: rotate(180deg);
+}
+
+
+.form-button {
+  border: none;
+  background: none;
+}
+
+.theme-toggle, .cat-button {
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgb(203, 203, 203);
+  padding: 0.6rem .8rem;
+  font-size: 1em;
+
+  transition: all ease-in .1s;
+}
+
+.dark-cat {
+  background-image: radial-gradient(rgb(69, 69, 69), rgb(35, 35, 35));
+  box-shadow: 0px 1px 3px rgb(0, 0, 0);
+}
+
+.light-cat {
+  background-image: radial-gradient(rgb(255, 255, 255), rgb(208, 208, 208));
+  box-shadow: 0 1px 3px rgb(142, 142, 142)
+}
+
+.dark-toggle {
+  background-image: radial-gradient(rgb(69, 69, 69), rgb(35, 35, 35));
+  box-shadow: 0px 1px 3px rgb(0, 0, 0);
+}
+
+.light-toggle {
+  background-image: radial-gradient(rgb(255, 255, 255), rgb(208, 208, 208));
+  box-shadow: 0 1px 3px rgb(0, 0, 0);
+}
+
+.light-icon {
+  color:rgb(0, 0, 0);
+}
+
+.dark-icon {
+  color: rgb(228, 228, 228);
+}
+
+.light-toggle:hover{
+  box-shadow: 0 1px 3px rgb(58, 58, 58)
+}
+
+.light-toggle:active{
+  box-shadow: 0 1px 5px rgb(0, 0, 0)
+}
+
+.dark-toggle:hover{
+  box-shadow: 0 1px 3px rgb(219, 219, 219)
+}
+
+.dark-toggle:active{
+  box-shadow: 0 1px 5px rgb(255, 255, 255)
+}
+
+
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
