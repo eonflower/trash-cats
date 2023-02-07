@@ -44,10 +44,12 @@ body {
 .form-container {
   display: flex;
   flex-wrap: wrap;
+  gap: .5rem;
   margin: auto;
   justify-content: center;
-  max-width: 600px;
-  height: 110px;
+  align-items: center;
+  max-width: 750px;
+  max-height: 200px;
   padding: 1rem;
 }
 
@@ -64,7 +66,6 @@ body {
 .button-span {
   display: flex;
   align-items: center;
-  padding-top: 1.5rem;
 }
 
 .input-span {
@@ -81,15 +82,17 @@ body {
 }
 
 .cat-button-img {
-  height: 40px;
+  height: 30px;
+  width: 30px;
   cursor: pointer;
 
-  transition: height ease-in .3s;
+  transition: height width ease-in .3s;
   transition: transform ease-in .5s;
 }
 
 .cat-button-img:active {
-  height: 45px;
+  height: 33px;
+  width: 33px
 }
 
 .cat-button-img:hover {
@@ -112,24 +115,14 @@ body {
   transition: all ease-in .1s;
 }
 
-.dark-cat {
-  background-image: radial-gradient(rgb(69, 69, 69), rgb(35, 35, 35));
-  box-shadow: 0px 1px 3px rgb(0, 0, 0);
+.dark-cat, .dark-toggle {
+  background-image: radial-gradient(rgb(145, 145, 145), rgb(65, 65, 65));
+  box-shadow: 0px 3px 3px rgb(0, 0, 0);
 }
 
-.light-cat {
-  background-image: radial-gradient(rgb(255, 255, 255), rgb(208, 208, 208));
-  box-shadow: 0 1px 3px rgb(142, 142, 142)
-}
-
-.dark-toggle {
-  background-image: radial-gradient(rgb(69, 69, 69), rgb(35, 35, 35));
-  box-shadow: 0px 1px 3px rgb(0, 0, 0);
-}
-
-.light-toggle {
-  background-image: radial-gradient(rgb(255, 255, 255), rgb(208, 208, 208));
-  box-shadow: 0 1px 3px rgb(0, 0, 0);
+.light-cat, .light-toggle {
+  background-image: radial-gradient(#fff, rgb(235, 235, 235));
+  box-shadow: 0px 3px 5px rgb(150, 150, 150);
 }
 
 .light-icon {
@@ -137,7 +130,7 @@ body {
 }
 
 .dark-icon {
-  color: rgb(228, 228, 228);
+  color: rgb(255, 255, 255);
 }
 
 .light-toggle:hover{
@@ -165,4 +158,137 @@ body {
   display: flex;
   justify-content: center;
   padding: 1rem;
+}
+
+.card-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 0 5rem 0;
+}
+
+.card-container {
+  width: 300px;
+  min-height: 250px;
+  position: relative;
+}
+
+.light-card {
+  background-image: radial-gradient(#fff, rgb(235, 235, 235));
+  box-shadow: 0px 3px 5px rgb(203, 203, 203);
+}
+
+.dark-card {
+  background-image: radial-gradient(rgb(145, 145, 145), rgb(65, 65, 65));
+  box-shadow: 0px 3px 5px rgb(0, 0, 0);
+}
+
+.card-img {
+  display: block;
+  margin: auto;
+  width: 300px;
+  height: 175px;
+  object-fit: cover;
+}
+
+.card-title {
+  padding: 1rem 0 .5rem 0;
+  letter-spacing: 3px;
+  display: flex;
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  justify-content: center;
+}
+
+.card-description {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 .5rem;
+}
+
+.card-nav {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.btn {
+  padding: 0 5px;
+}
+
+.light-btn {
+  background-image: radial-gradient(#fff, rgb(235, 235, 235));
+  box-shadow: 0px 1px 5px rgb(150, 150, 150);
+}
+
+.light-btn:hover {
+  color:rgb(123, 123, 123);
+}
+
+.light.dropdown {
+  background-image: radial-gradient(#fff, rgb(235, 235, 235));
+}
+
+.light-dropdown-item {
+  color: black;
+  background-color: rgb(235, 235, 235);
+  box-shadow: 0px 1px 5px rgb(150, 150, 150);
+}
+
+.dark-btn {
+  background-image: radial-gradient(rgb(70, 70, 70), rgb(29, 29, 29));
+  box-shadow: 0px 1px 3px rgb(0, 0, 0);
+  color: #fff;
+}
+
+.dark-btn:hover {
+  color:rgb(164, 164, 164);
+}
+
+.dark.dropdown {
+  background-image: radial-gradient(rgb(145, 145, 145), rgb(65, 65, 65));
+}
+
+.dark-dropdown-item {
+  color: #fff;
+  background-color: rgb(48, 48, 48);
+  box-shadow: 0px 1px 3px rgb(0, 0, 0);
+}
+
+.dropdown-menu {
+  padding: 0;
+  min-width: 2rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.edit-button {
+  border-radius: 0px 10px 0 0;
+}
+
+.delete-button {
+  border-radius: 0 0 10px 10px;
+}
+
+.edit-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 300px;
+  flex-wrap: wrap;
+  margin: auto;
+  padding: 1.2rem 1rem;
+  gap: .5rem;
+}
+
+.light-label {
+  color: black;
+  font-size: .8rem;
+}
+
+.dark-label {
+  color: #fff;
+  font-size: .8rem;
 }

@@ -2,11 +2,12 @@ import React, { useState, useContext } from "react";
 import whiteCat from "../assets/catWhite.png"
 import blackCat from "../assets/catBlack.png"
 import { ThemeContext } from "../themeContext";
+import axios from "axios";
 
-export default function Form() {
+export default function Form(props) {
     const [formData, setFormData] = useState({
         title: "",
-        imgURL: "",
+        imgUrl: "",
         description: ""
     })
 
@@ -22,10 +23,20 @@ export default function Form() {
         }))
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        axios.post('https://api.vschool.io/aloe/thing', formData)
+        .then(res => {console.log(res.data)})
+    }
+
+
+
     return (
-        <div className={`form-container ${color}-form`}>
-            <span className="input-span">
+        <div className="form-container">
+            <form id="form" onSubmit={handleSubmit} className={`form-container ${color}-form`}>
             <input
+                required
                 name="title"
                 type="text"
                 value={formData.title}
@@ -34,14 +45,16 @@ export default function Form() {
                 className="input input-title"
             />
             <input
-                name="imgURL"
+                required
+                name="imgUrl"
                 type="text"
-                value={formData.imgURL}
+                value={formData.imgUrl}
                 onChange={handleChange}
                 placeholder="image url"
                 className="input input-imgUrl"
             />
             <input
+                required
                 name="description"
                 type="text"
                 value={formData.description}
@@ -49,11 +62,10 @@ export default function Form() {
                 placeholder="description"
                 className="input input-description"
             />
-            </span>
-            <span className="button-span">
-            <button className={`cat-button ${color}-cat`}><img className="cat-button-img" src={catColor}/></button>
-            </span>
-            
+        </form>
+        <span className="button-span">
+        <button type="submit" form="form" className={`cat-button ${color}-cat`}><img className="cat-button-img" src={catColor}/></button>
+        </span>
         </div>
     )
 }
