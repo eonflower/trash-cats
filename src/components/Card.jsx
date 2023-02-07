@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react";
+import axios from "axios";
 import { ThemeContext } from "../themeContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +9,8 @@ import {
   DropdownMenu,
   DropdownItem,
 } from 'reactstrap';
+// import { faComment } from "@fortawesome/free-regular-svg-icons";
+// import Comments from "./Comments";
 
 
 export default function Card(props) {
@@ -22,14 +25,21 @@ export default function Card(props) {
         id: props.id
     })
 
+    const [comment, setComment] = useState("")
+
     const toggleDropdown = () => setDropdownOpen((prevState) => !prevState);
     const toggleShowForm = () => setShowForm((prevState) => !prevState);
     
 
-    
+    const updateCard = (id, card) => {
+        axios.put("https://api.vschool.io/aloe/thing/" + id, card)
+        .then(res => console.log("edited"))
+    }
 
     const handleChange = (e) => { 
         const {name, value} = e.target
+        setComment(prevState => props.comment)
+            
         setCard(prevState => {
             return ({
                 ...prevState,
@@ -39,13 +49,12 @@ export default function Card(props) {
     }
     
     const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("yes")
-        props.edit(props.id, card)
-        toggleShowForm()
-
+        e.preventDefault();
+        updateCard(card.id, card)
 
     }
+
+
 
     return (
         <div className={`card-container ${color}-card`}>
@@ -79,14 +88,16 @@ export default function Card(props) {
                 <>
                 
                 <h2 className={`card-title ${color}-title`}>{card.title}</h2>
-                <p className={`card-description ${color}-title`}>{card.description}</p>
+                <p className={`card-description ${color}-description`}>{card.description}</p>
+                {/* <hr /> */}
+                {/* <Comments /> */}
                  </>}
             
             <div className="d-flex card-nav">
             <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
             <DropdownToggle className={`${color}-btn`} color="black"><FontAwesomeIcon icon={faEllipsis} /></DropdownToggle>
             <DropdownMenu className={`${color}-dropdown`}>
-            <DropdownItem onClick={() => {toggleShowForm(), props.edit}}  className={`${color}-dropdown-item edit-button`}>{showForm ? "save" : "edit"}</DropdownItem>
+            <DropdownItem onClick={(e) => {toggleShowForm(), handleSubmit(e)}}  className={`${color}-dropdown-item edit-button`}>{showForm ? "save" : "edit"}</DropdownItem>
             <DropdownItem onClick={props.delete} className={`${color}-dropdown-item delete-button`}>delete</DropdownItem>
             </DropdownMenu>
             </Dropdown>

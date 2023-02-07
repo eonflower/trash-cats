@@ -10,40 +10,28 @@ import { ThemeContext } from './themeContext'
 
 function App() {
   const [cardList, setCardList] = useState([])
+  const [commentData, setCommentData] = useState("")
   const [cardData, setCardData] = useState({
     title: "",
     imgUrl: "",
     description: ""
   })
 
-  const getCardData = () => {
+  const getData = async () => {
+    const result = await axios("https://api.vschool.io/aloe/thing")
+    setCardList(result.data)
+  }
+  // const getCardData = () => {
     useEffect(() => {
-      const getData = async () => {
-        const result = await axios("https://api.vschool.io/aloe/thing")
-        setCardList(result.data)
-      }
       getData()
     }, [])
-  }
-
-  // const updateCard = (id, updatedCard) => {
-  //   setCardList(prevList => {
-  //     return prevList.map((card) => {
-  //       if (card.id === id) {
-  //         console.log(card.id)
-  //         return updatedCard
-  //       } else {
-  //         return card
-  //       }
-  //     })
-  //   })
-    
-  // }
+  // } 
 
   
   const deleteCard = (id) => {
     axios.delete("https://api.vschool.io/aloe/thing/" + id)
       .then(res => console.log(res.data))
+      .then(res => getData())
     setCardList(cardList.filter((card) => card.id !== id))
 
   }
@@ -54,16 +42,16 @@ function App() {
       title={card.title}
       imgUrl={card.imgUrl}
       description={card.description}
-      // edit={}
       delete={() => deleteCard(card._id)}
-      id={card.id}
+      id={card._id}
+      comment={commentData}
       />
-  })
-  getCardData()
-  return (
-    <div className="app">
+    })
+    // getCardData()
+    return (
+      <div className="app">
       <Header />
-      <Form />
+      <Form getData={getData}/>
       <div className='card-list'>{savedCards}</div>
       <Footer />
     </div>

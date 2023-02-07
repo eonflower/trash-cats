@@ -23,11 +23,19 @@ export default function Form(props) {
         }))
     }
 
+    // console.log(props.getData)
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         axios.post('https://api.vschool.io/aloe/thing', formData)
         .then(res => {console.log(res.data)})
+        .then(res => props.getData())
+        setFormData({
+            title: "",
+            imgUrl: "",
+            description: ""
+        })
     }
 
 
