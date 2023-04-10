@@ -1,5 +1,6 @@
 import React, {useState, useContext} from "react";
 import axios from "axios";
+import config from "../config";
 import { ThemeContext } from "../themeContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +33,7 @@ export default function Card(props) {
     
 
     const updateCard = (id, card) => {
-        axios.put("https://api.vschool.io/aloe/thing/" + id, card)
+        axios.put(`https://api.vschool.io/${config.CLIENT_ID}/thing` + id, card)
         .then(res => console.log("edited"))
     }
 
@@ -91,7 +92,7 @@ export default function Card(props) {
                 <p className={`card-description ${color}-description`}>{card.description}</p>
                 {/* <hr /> */}
                 {/* <Comments /> */}
-                 </>}
+                </>}
             
             <div className="d-flex card-nav">
             <Dropdown isOpen={dropdownOpen} toggle={toggleDropdown}>
@@ -102,6 +103,7 @@ export default function Card(props) {
             </DropdownMenu>
             </Dropdown>
             </div>
+
         </div>
     )
 }

@@ -3,6 +3,7 @@ import whiteCat from "../assets/catWhite.png"
 import blackCat from "../assets/catBlack.png"
 import { ThemeContext } from "../themeContext";
 import axios from "axios";
+import config from "../config";
 
 export default function Form(props) {
     const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ export default function Form(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        axios.post('https://api.vschool.io/aloe/thing', formData)
+        axios.post(`https://api.vschool.io/${config.CLIENT_ID}/thing`, formData)
         .then(res => {console.log(res.data)})
         .then(res => props.getData())
         setFormData({

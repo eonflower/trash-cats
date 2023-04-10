@@ -5,6 +5,7 @@ import Card from './components/Card'
 import Footer from './components/Footer'
 import Form from './components/Form'
 import Header from './components/Header'
+import config from './config'
 import { ThemeContext } from './themeContext'
 
 
@@ -18,8 +19,9 @@ function App() {
   })
 
   const getData = async () => {
-    const result = await axios("https://api.vschool.io/aloe/thing")
+    const result = await axios(`https://api.vschool.io/${config.CLIENT_ID}/thing`)
     setCardList(result.data)
+    // console.log("hello")
   }
   // const getCardData = () => {
     useEffect(() => {
@@ -29,10 +31,11 @@ function App() {
 
   
   const deleteCard = (id) => {
-    axios.delete("https://api.vschool.io/aloe/thing/" + id)
+    axios.delete(`https://api.vschool.io/${config.CLIENT_ID}/thing`+ id)
       .then(res => console.log(res.data))
       .then(res => getData())
-    setCardList(cardList.filter((card) => card.id !== id))
+    setCardList(cardList.filter((card) => card.id !== id));
+    getData()
 
   }
 
